@@ -2,6 +2,10 @@
 include 'connect.php';
 session_start();
 
+require 'assets/vendor/autoload.php';
+
+use Razorpay\Api\Api;
+
 // Redirect user to home page if not logged in
 if(!isset($_SESSION['user_id'])) {
     header('location: home.php');
@@ -9,6 +13,7 @@ if(!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+
 
 // Fetch user profile information
 $select_profile = $conn->prepare("SELECT * FROM `users` WHERE user_id = ?");
@@ -24,6 +29,16 @@ if(isset($_POST['submit'])) {
     $method = filter_var($_POST['method'], FILTER_SANITIZE_STRING);
     $total_products = $_POST['total_products'];
     $total_price = $_POST['total_price'];
+
+    $payment_api = new Api($keyId, $keySecret);
+
+    $orderData = [
+        'amount'          => ($total_price*100),
+        'currency'        => 'INR'
+    ];
+    
+    $razorpayOrder = $payment_api->order->create($orderData);
+    $razorpay_id = $razorpayOrder['id'];
 
     // Check if cart is not empty
     $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
@@ -133,6 +148,8 @@ if(isset($_POST['submit'])) {
          <input type="hidden" name="name" value="<?= $fetch_profile['name'] ?>">
          <input type="hidden" name="phone" value="<?= $fetch_profile['phone'] ?>">
          <input type="hidden" name="email" value="<?= $fetch_profile['email'] ?>">
+         <input type="hidden" name="roll" value="<?= $fetch_profile['roll'] ?>">
+         <input type="hidden" name="method" value="Online Payment">
          
 
          <!-- User info section -->
@@ -142,21 +159,9 @@ if(isset($_POST['submit'])) {
             <p><i class="fas fa-phone"></i><span><?= $fetch_profile['phone'] ?></span></p>
             <p><i class="fas fa-envelope"></i><span><?= $fetch_profile['email'] ?></span></p>
             <a href="update_profile.php" class="btn">Update Info</a>
-            <h3></h3>
-            <h3>Payment Method</h3>
-            <!-- Only online payment method options -->
-            <label for="gpay">
-               <input type="radio" id="gpay" name="method" value="gpay" required>
-               <img src="assets/images/gpay.png" alt="GPay Logo"> Google Pay
-            </label>
-            <label for="paytm">
-               <input type="radio" id="paytm" name="method" value="paytm" required>
-               <img src="assets/images/paytm.png" alt="Paytm Logo"> Paytm
-            </label>
-            <!-- End of payment method options -->
             <p class="instructions">Please make the payment online and pick up your order from college canteen.</p>
             <!-- Place order button -->
-            <input type="submit" value="Place Order" class="btn btn-place-order" style="width:100%; background:var(--red); color:var(--white);" name="submit">
+            <input type="submit" value="Place Order" id="pay-btn" class="btn btn-place-order" style="width:100%; background:var(--red); color:var(--white);" name="submit">
          </div>
       </form>
    </section>
@@ -170,6 +175,67 @@ if(isset($_POST['submit'])) {
    </a>
 
    <script src="./assets/js/script.js"></script>
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "<?php echo $keyId; ?>",
+            "amount": "<?php echo $grand_total * 100; ?>",
+            "currency": "INR",
+            "name": "Fr Crce Cafe",
+            "description": "Food booking for <?php echo $fetch_profile['name']; ?>",
+            "image": "favicon.png",
+            "order_id": "<?php echo $razorpay_id; ?>",
+            "handler": function(response) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'processing',
+                    data: {
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_signature: response.razorpay_signature
+                    },
+                    success: function(data) {
+                        console.log('Session variables set successfully.');
+                        if (data.trim() === "success") {
+                            window.location.href = "/success";
+                        } else {
+                            window.location.href = "/failed";
+                        }
+                    }
+                });
+            },
+            "prefill": {
+                "name": "<?php echo $fetch_profile['name']; ?>"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp = new Razorpay(options);
+        rzp.on('payment.failed', function(response) {
+            alert("Payment failed!");
+            $.ajax({
+                type: 'POST',
+                url: 'failed',
+                data: {
+                    error_code: response.error.code,
+                    error_description: response.error.description,
+                    error_source: response.error.source,
+                    error_step: response.error.step,
+                    error_reason: response.error.reason,
+                    error_metadata_order_id: response.error.metadata.order_id,
+                    error_metadata_payment_id: response.error.metadata.payment_id
+                },
+                success: function(data) {
+                    console.log('Failure Recorded Successfully.');;
+                }
+            });
+        });
+        document.getElementById('pay-btn').onclick = function(e) {
+            rzp.open();
+            e.preventDefault();
+        }
+    </script>
 
    <!-- Ionicon link -->
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
