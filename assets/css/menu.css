@@ -1,0 +1,172 @@
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif; /* Change to your preferred font */
+  background-color: gray; /* Adjust as needed */
+}
+
+.header {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between; /* Align items to the left and right */
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo img {
+  max-width: 80px; /* Adjust as needed */
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+}
+
+.navigation ul li {
+  margin-left: 20px; /* Adjust as needed */
+}
+
+.navigation ul li:first-child {
+  margin-left: 0;
+}
+
+.navigation ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navigation ul li a:hover {
+  color: gold;
+}
+
+.separator {
+  height: 2px;
+  background-color: gold;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.gold {
+  background-color: gold;
+}
+
+.topbar {
+  background-color: #1e1e1e; /* Adjust as needed */
+  color: #ffffff; /* Adjust text color as needed */
+  padding: 10px 0; /* Adjust padding as needed */
+}
+
+.topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar .topbar-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.topbar .topbar-item .icon {
+  margin-right: 5px; /* Adjust icon margin as needed */
+}
+
+.topbar .separator {
+  height: 1px; /* Adjust separator height as needed */
+  width: 1px; /* Adjust separator width as needed */
+  background-color: #ffffff; /* Adjust separator color as needed */
+  margin: 0 10px; /* Adjust separator margin as needed */
+}
+
+.topbar .link:hover {
+  text-decoration: underline; /* Add underline effect on hover */
+}
+
+.add-cart-container {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.products {
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px; /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+.box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Center horizontally */
+  gap: 20px;
+}
+
+.box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Fixed width for consistent size */
+  text-align: center;
+}
+
+.box img {
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  border-radius: 50%; /* Make it circular */
+  margin: 0 auto 10px; /* Center image vertically and horizontally */
+  display: block;
+}
+
+.name {
+  font-size: 18px; /* Adjust as needed */
+  margin-top: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.price {
+  font-size: 16px; /* Adjust as needed */
+}
+
+.qty {
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+}
+
+button {
+  background-color: #007bff; /* Adjust as needed */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px; /* Adjust as needed */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Adjust as needed */
+}
+.products {
+  margin-top: 40px;
+}

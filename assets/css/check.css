@@ -1,0 +1,177 @@
+/* CSS for Checkout Page */
+
+/* General styles */
+body {
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 50px; /* Added padding bottom */
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Heading styles */
+.heading {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.heading h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.heading p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Checkout section styles */
+.checkout {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Adjusted max-width */
+    margin: 20px 0;
+}
+
+.checkout .title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cart-items h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cart-items .empty {
+    font-size: 16px;
+    color: #666;
+}
+
+.cart-items p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.cart-items .grand-total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* User info section styles */
+.user-info {
+    margin-top: 30px;
+}
+
+.user-info h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.user-info p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.user-info .instructions {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+}
+
+/* Payment method section styles */
+.user-info label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.user-info input[type="radio"] {
+    margin-right: 10px;
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF5733;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #FF704D;
+}
+
+/* View Cart button styles */
+.view-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.view-cart .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-cart .btn:hover {
+    background-color: #0056b3;
+}
+/* Place Order button styles */
+.user-info .btn-place-order {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #FF5733;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.user-info .btn-place-order:hover {
+    background-color: #FF704D;
+}

@@ -1,0 +1,39 @@
+/* styles.css */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.cart-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.cart-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.item-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.item-details {
+    padding-top: 10px;
+}
+
+.item-name {
+    margin: 0;
+}
+
+.item-price,
+.item-quantity {
+    margin: 5px 0;
+}

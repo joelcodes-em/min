@@ -1,0 +1,206 @@
+/* Header styles */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.header .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header .navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.header .navbar a:hover {
+  text-decoration: underline;
+}
+
+.header .icons {
+  display: flex;
+  align-items: center;
+}
+
+.header .icons .fa-bars,
+.header .icons .fa-user {
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Profile section styles */
+.profile {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.profile p {
+  margin-bottom: 10px;
+}
+
+.profile .btn {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  background-color: #555;
+  border-radius: 5px;
+}
+
+.profile .btn:hover {
+  background-color: #777;
+}
+
+.profile .option-btn,
+.profile .delete-btn {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.profile .option-btn:hover,
+.profile .delete-btn:hover {
+  text-decoration: underline;
+}
+
+/* Message box styles */
+.message {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.message span {
+  flex: 1;
+}
+
+.message i {
+  cursor: pointer;
+}
+
+.message i:hover {
+  color: #ff6666;
+}
+
+
+
+/* admin_style.css */
+
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+
+/* Header styles */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.header .navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+/* Accounts section styles */
+.accounts {
+  padding: 20px;
+}
+
+.accounts .heading {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.accounts .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.accounts .box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accounts .box p {
+  margin-bottom: 10px;
+}
+
+.accounts .box p span {
+  font-weight: bold;
+}
+
+.accounts .flex-btn {
+  display: flex;
+  align-items: center;
+}
+
+.accounts .option-btn,
+.accounts .delete-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accounts .option-btn {
+  background-color: #4caf50;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.accounts .delete-btn {
+  background-color: #f44336;
+  color: #fff;
+}
